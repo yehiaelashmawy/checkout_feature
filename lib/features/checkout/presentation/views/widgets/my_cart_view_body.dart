@@ -1,3 +1,4 @@
+import 'package:checkout_payment/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_boutton.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/order_info_item.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price.dart';
@@ -23,8 +24,18 @@ class MyCartViewBody extends StatelessWidget {
           Divider(thickness: 2, height: 17 + 17, color: Color(0xffc7c7c7)),
           TotalPrice(),
           SizedBox(height: 16),
-          CustomBoutton(),
-          SizedBox(height: 34),
+          CustomBoutton(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PaymentDetailsView();
+                  },
+                ),
+              );
+            },
+          ),
+          SizedBox(height: 50),
         ],
       ),
     );
