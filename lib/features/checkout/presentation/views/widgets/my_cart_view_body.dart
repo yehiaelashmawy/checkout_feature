@@ -1,4 +1,4 @@
-import 'package:checkout_payment/core/utils/style.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_boutton.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/order_info_item.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price.dart';
 import 'package:flutter/material.dart';
@@ -20,24 +20,11 @@ class MyCartViewBody extends StatelessWidget {
           OrderInfoItem(title: 'Discount', price: 0),
           SizedBox(height: 3),
           OrderInfoItem(title: 'Shipping', price: 8),
-          Divider(height: 17 + 17, color: Color(0xffc7c7c7)),
+          Divider(thickness: 2, height: 17 + 17, color: Color(0xffc7c7c7)),
           TotalPrice(),
-          SizedBox(height: 30),
-          Container(
-            height: 73,
-            width: 350,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Color(0xff34A853),
-            ),
-            child: Center(
-              child: Text(
-                'Complete Payment',
-                style: Style.style25.copyWith(fontSize: 22),
-              ),
-            ),
-          ),
-          SizedBox(height: 47),
+          SizedBox(height: 16),
+          CustomBoutton(),
+          SizedBox(height: 34),
         ],
       ),
     );
