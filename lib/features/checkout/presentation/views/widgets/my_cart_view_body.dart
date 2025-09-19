@@ -1,3 +1,4 @@
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/order_info_item.dart';
 import 'package:flutter/material.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -5,11 +6,21 @@ class MyCartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 18),
-        Image.asset('assets/image/basket_image.png'),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        children: [
+          SizedBox(height: 18),
+          Image.asset('assets/image/basket_image.png'),
+          SizedBox(height: 25),
+          OrderInfoItem(title: 'Order Subtotal', price: 42.97),
+          SizedBox(height: 3),
+          OrderInfoItem(title: 'Discount', price: 0),
+          SizedBox(height: 3),
+          OrderInfoItem(title: 'Shipping', price: 8),
+          Divider(height: 17 + 17),
+        ],
+      ),
     );
   }
 }
