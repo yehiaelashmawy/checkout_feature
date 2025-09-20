@@ -4,6 +4,8 @@ import 'package:svg_flutter/svg.dart';
 
 AppBar buildAppBar({required final String title}) {
   return AppBar(
+    backgroundColor: Color(0XFFFFFFFF),
+
     leading: Center(child: SvgPicture.asset('assets/image/arrow.svg')),
     centerTitle: true,
     title: Text(title, textAlign: TextAlign.center, style: Style.style25),
