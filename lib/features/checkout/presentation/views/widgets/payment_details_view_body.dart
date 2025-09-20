@@ -11,8 +11,17 @@ class PaymentDetailsViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(child: PaymentMethodsListView()),
-        SliverFillRemaining(child: CustomCreditCard()),
-        SliverToBoxAdapter(child: CustomBoutton()),
+        SliverToBoxAdapter(child: CustomCreditCard()),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20, left: 20, bottom: 50.0),
+              child: CustomBoutton(),
+            ),
+          ),
+        ),
       ],
     );
   }
