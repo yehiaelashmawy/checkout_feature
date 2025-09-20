@@ -12,7 +12,7 @@ class PaymentMethodItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 600),
+      duration: Duration(milliseconds: 300),
       height: 62,
       width: 103,
       decoration: ShapeDecoration(
