@@ -2,8 +2,9 @@ import 'package:checkout_payment/core/utils/style.dart';
 import 'package:flutter/material.dart';
 
 class CustomBoutton extends StatelessWidget {
-  const CustomBoutton({super.key, this.onTap});
+  const CustomBoutton({super.key, this.onTap, required this.text});
   final void Function()? onTap;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +18,7 @@ class CustomBoutton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child: Center(child: Text('Complete Payment', style: Style.style22)),
+        child: Center(child: Text(text, style: Style.style22)),
       ),
     );
   }

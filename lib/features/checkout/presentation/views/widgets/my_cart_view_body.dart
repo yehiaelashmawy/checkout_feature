@@ -34,6 +34,7 @@ class MyCartViewBody extends StatelessWidget {
                 ),
               );
             },
+            text: 'Complete Payment',
           ),
           SizedBox(height: 50),
         ],
