@@ -1,5 +1,7 @@
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_check_icon.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_dashed_line.dart';
+import 'package:checkout_payment/features/checkout/presentation/views/widgets/thank_you_card.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg.dart';
 
 class ThankYouViewBody extends StatelessWidget {
   const ThankYouViewBody({super.key});
@@ -16,12 +18,14 @@ class ThankYouViewBody extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Container(
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color(0xFFD9D9D9),
+          ThankYouCard(),
+          Positioned(
+            bottom: MediaQuery.sizeOf(context).height * .2 + 20,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30),
+              child: CustomDashedLine(),
             ),
           ),
           Positioned(
@@ -34,25 +38,7 @@ class ThankYouViewBody extends StatelessWidget {
             bottom: MediaQuery.sizeOf(context).height * .2,
             child: CircleAvatar(backgroundColor: Colors.white),
           ),
-          Positioned(
-            top: -50,
-            left: 0,
-            right: 0,
-            child: CircleAvatar(
-              radius: 50,
-              backgroundColor: Color(0xFFD9D9D9),
-              child: CircleAvatar(
-                radius: 40,
-                backgroundColor: Color(0xff34A853),
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Center(
-                    child: SvgPicture.asset('assets/image/check.svg'),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          Positioned(top: -50, left: 0, right: 0, child: CustomChickIcon()),
         ],
       ),
     );
