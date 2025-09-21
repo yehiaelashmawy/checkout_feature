@@ -9,24 +9,16 @@ class ThankYouViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        right: 20.0,
-        left: 20,
-        bottom: 50,
-        top: 111,
-      ),
+      padding: const EdgeInsets.only(right: 20.0, left: 20, bottom: 50),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           ThankYouCard(),
           Positioned(
             bottom: MediaQuery.sizeOf(context).height * .2 + 20,
-            left: 0,
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 30.0, right: 30),
-              child: CustomDashedLine(),
-            ),
+            left: 20 + 8,
+            right: 20 + 8,
+            child: CustomDashedLine(),
           ),
           Positioned(
             left: -20,

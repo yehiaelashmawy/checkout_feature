@@ -3,7 +3,6 @@ import 'package:checkout_payment/features/checkout/presentation/views/widgets/ca
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_item_info.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:svg_flutter/svg.dart';
 
 class ThankYouCard extends StatelessWidget {
@@ -24,7 +23,7 @@ class ThankYouCard extends StatelessWidget {
             Text('Thank you!', style: Style.style25),
             SizedBox(height: 2),
             Text('Your transaction was successful', style: Style.style20),
-            SizedBox(height: 42),
+            SizedBox(height: 50),
             PaymentItemInfo(title: 'Date', info: '01/24/2023'),
             SizedBox(height: 20),
             PaymentItemInfo(title: 'Time', info: '10:15 AM'),
@@ -34,7 +33,7 @@ class ThankYouCard extends StatelessWidget {
             SizedBox(height: 6),
             Divider(thickness: 2, height: 24 + 24, color: Color(0xffc7c7c7)),
             TotalPrice(),
-            SizedBox(height: 30),
+            SizedBox(height: 40),
             CardInfoWidget(),
             Spacer(),
             Row(
