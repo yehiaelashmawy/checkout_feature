@@ -3,7 +3,8 @@ import 'package:checkout_payment/features/checkout/presentation/views/widgets/ca
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_item_info.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/total_price.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:svg_flutter/svg.dart';
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({super.key});
@@ -35,6 +36,35 @@ class ThankYouCard extends StatelessWidget {
             TotalPrice(),
             SizedBox(height: 30),
             CardInfoWidget(),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SvgPicture.asset('assets/image/barcode.svg'),
+                Container(
+                  width: 113,
+                  height: 58,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      side: BorderSide(color: Color(0xff34A853)),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'PAID',
+                      style: Style.styleSemiBold18.copyWith(
+                        fontSize: 24,
+                        color: Color(0xff34A853),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: ((MediaQuery.sizeOf(context).height * 0.2 + 20) / 2) - 29,
+            ),
           ],
         ),
       ),
