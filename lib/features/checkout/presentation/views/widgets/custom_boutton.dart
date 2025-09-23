@@ -2,9 +2,15 @@ import 'package:checkout_payment/core/utils/style.dart';
 import 'package:flutter/material.dart';
 
 class CustomBoutton extends StatelessWidget {
-  const CustomBoutton({super.key, this.onTap, required this.text});
+  const CustomBoutton({
+    super.key,
+    this.onTap,
+    required this.text,
+    this.isLoading = false,
+  });
   final void Function()? onTap;
   final String text;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +24,11 @@ class CustomBoutton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child: Center(child: Text(text, style: Style.style22)),
+        child: Center(
+          child: isLoading
+              ? CircularProgressIndicator()
+              : Text(text, style: Style.style22),
+        ),
       ),
     );
   }
