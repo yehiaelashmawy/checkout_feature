@@ -23,6 +23,7 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
         }
 
         if (state is PaymentFailure) {
+          Navigator.of(context).pop();
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.errMessage)));
@@ -32,7 +33,7 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
         return CustomBoutton(
           onTap: () {
             PaymentIntentInputModel paymentIntentInputModel =
-                PaymentIntentInputModel(amount: '50.97', currency: r'USD');
+                PaymentIntentInputModel(amount: '100', currency: 'USD');
             BlocProvider.of<PaymentCubit>(
               context,
             ).makePayment(paymentIntentInputModel: paymentIntentInputModel);
