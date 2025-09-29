@@ -1,9 +1,6 @@
-import 'dart:developer';
-
+import 'package:checkout_payment/core/functions/get_transaction_data.dart';
 import 'package:checkout_payment/core/utils/api_keys.dart';
 import 'package:checkout_payment/features/checkout/data/models/amount_model/amount_model.dart';
-import 'package:checkout_payment/features/checkout/data/models/amount_model/details.dart';
-import 'package:checkout_payment/features/checkout/data/models/item_list_model/item.dart';
 import 'package:checkout_payment/features/checkout/data/models/item_list_model/item_list_model.dart';
 import 'package:checkout_payment/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:checkout_payment/features/checkout/presentation/manager/cubit/payment_cubit.dart';
@@ -102,31 +99,20 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
             );
           },
           onError: (error) {
-            print("onError: $error");
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(error.toString())));
+            Navigator.pop(context);
+            Navigator.pop(context);
           },
           onCancel: () {
-            print('cancelled:');
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text('Canceld')));
             Navigator.pop(context);
           },
         ),
       ),
     );
-  }
-
-  ({AmountModel amount, ItemListModel itemList}) getTransactinData() {
-    var amount = AmountModel(
-      total: '90',
-      currency: 'USD',
-      details: Details(subtotal: '90', shipping: '0', shippingDiscount: 0),
-    );
-
-    List<OrederItemModel> orders = [
-      OrederItemModel(currency: 'USD', name: 'Apple', quantity: 10, price: '4'),
-      OrederItemModel(currency: 'USD', name: 'Apple', quantity: 10, price: '5'),
-    ];
-
-    var itemList = ItemListModel(items: orders);
-
-    return (amount: amount, itemList: itemList);
   }
 }
