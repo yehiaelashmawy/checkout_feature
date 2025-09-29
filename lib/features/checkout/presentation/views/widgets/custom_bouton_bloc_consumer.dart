@@ -3,6 +3,7 @@ import 'package:checkout_payment/features/checkout/data/models/amount_model/amou
 import 'package:checkout_payment/features/checkout/data/models/amount_model/details.dart';
 import 'package:checkout_payment/features/checkout/data/models/item_list_model/item.dart';
 import 'package:checkout_payment/features/checkout/data/models/item_list_model/item_list_model.dart';
+import 'package:checkout_payment/features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:checkout_payment/features/checkout/presentation/manager/cubit/payment_cubit.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/thanks_you_view.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_boutton.dart';
@@ -11,8 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 
 class CustomBouttonBlocConsumer extends StatelessWidget {
-  const CustomBouttonBlocConsumer({super.key});
-
+  const CustomBouttonBlocConsumer({super.key, required this.isPaypal});
+  final bool isPaypal;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PaymentCubit, PaymentState>(
@@ -37,18 +38,12 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomBoutton(
           onTap: () {
-            // PaymentIntentInputModel paymentIntentInputModel =
-            //     PaymentIntentInputModel(
-            //       amount: '100',
-            //       currency: 'USD',
-            //       customerId: 'cus_T8bgOaDqieyRwJ',
-            //     );
-            // BlocProvider.of<PaymentCubit>(
-            //   context,
-            // ).makePayment(paymentIntentInputModel: paymentIntentInputModel);
-
-            var transactionData = getTransactinData();
-            executePaypalPayment(context, transactionData);
+            if (isPaypal) {
+              var transactionData = getTransactinData();
+              executePaypalPayment(context, transactionData);
+            } else {
+              executeStripePayment(context);
+            }
           },
           isLoading: state is PaymentLoading ? true : false,
 
@@ -56,6 +51,17 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
         );
       },
     );
+  }
+
+  void executeStripePayment(BuildContext context) {
+    PaymentIntentInputModel paymentIntentInputModel = PaymentIntentInputModel(
+      amount: '100',
+      currency: 'USD',
+      customerId: 'cus_T8bgOaDqieyRwJ',
+    );
+    BlocProvider.of<PaymentCubit>(
+      context,
+    ).makePayment(paymentIntentInputModel: paymentIntentInputModel);
   }
 
   void executePaypalPayment(
