@@ -78,6 +78,7 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
             print("onSuccess: $params");
+            Navigator.pop(context);
           },
           onError: (error) {
             print("onError: $error");
@@ -85,6 +86,7 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
           },
           onCancel: () {
             print('cancelled:');
+            Navigator.pop(context);
           },
         ),
       ),
@@ -93,14 +95,14 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
 
   ({AmountModel amount, ItemListModel itemList}) getTransactinData() {
     var amount = AmountModel(
-      total: '100',
+      total: '90',
       currency: 'USD',
-      details: Details(subtotal: '100', shipping: '0', shippingDiscount: 0),
+      details: Details(subtotal: '90', shipping: '0', shippingDiscount: 0),
     );
 
     List<OrederItemModel> orders = [
       OrederItemModel(currency: 'USD', name: 'Apple', quantity: 10, price: '4'),
-      OrederItemModel(currency: 'USD', name: 'Apple', quantity: 5, price: '5'),
+      OrederItemModel(currency: 'USD', name: 'Apple', quantity: 10, price: '5'),
     ];
 
     var itemList = ItemListModel(items: orders);
