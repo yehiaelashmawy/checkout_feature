@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:checkout_payment/core/utils/api_keys.dart';
 import 'package:checkout_payment/features/checkout/data/models/amount_model/amount_model.dart';
 import 'package:checkout_payment/features/checkout/data/models/amount_model/details.dart';
@@ -83,12 +85,24 @@ class CustomBouttonBlocConsumer extends StatelessWidget {
           ],
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
-            print("onSuccess: $params");
-            Navigator.pop(context);
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return ThankYouView();
+                },
+              ),
+              (route) {
+                if (route.settings.name == '/') {
+                  return true;
+                } else {
+                  return false;
+                }
+              },
+            );
           },
           onError: (error) {
             print("onError: $error");
-            Navigator.pop(context);
           },
           onCancel: () {
             print('cancelled:');

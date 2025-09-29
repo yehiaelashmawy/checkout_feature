@@ -1,7 +1,6 @@
 import 'package:checkout_payment/features/checkout/presentation/views/thanks_you_view.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_boutton.dart';
 import 'package:checkout_payment/features/checkout/presentation/views/widgets/custom_credit_card.dart';
-import 'package:checkout_payment/features/checkout/presentation/views/widgets/payment_method_list_view.dart';
 import 'package:flutter/material.dart';
 
 class PaymentDetailsViewBody extends StatefulWidget {
